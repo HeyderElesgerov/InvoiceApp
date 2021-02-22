@@ -1,0 +1,27 @@
+﻿@using InvoiceApp.Application.ViewModels.Client;
+@model ClientViewModel;
+
+<h1>Delete client</h1>
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.FirstName)
+    @Html.HiddenFor(m => m.LastName)
+
+    <div>
+        @Html.ValidationSummary(true)
+    </div>
+    <div>
+        <b>First Name: </b>@Html.DisplayFor(m => m.FirstName)
+    </div>
+    <div>
+        <b>Last Name: </b>@Html.DisplayFor(m => m.LastName)
+    </div>
+
+    <br />
+
+    <div>
+        <input type="submit" value="Delete" />
+    </div>
+}

@@ -1,0 +1,62 @@
+﻿@using InvoiceApp.UI.MVC.Models;
+@model CreateInvoiceVM;
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.InvoiceViewModel.Id)
+
+    <div>
+        @Html.ValidationSummary(true)
+    </div>
+
+    <div>
+        <b>Invoice Date:</b>
+        <input type="date" asp-for="InvoiceViewModel.InvoiceDate" required />
+        <span>@Html.ValidationMessageFor(m => m.InvoiceViewModel.InvoiceDate)</span>
+    </div>
+
+    <div>
+        <b>Due Date:</b>
+        <input type="date" asp-for="InvoiceViewModel.DueDate" required />
+        <span>@Html.ValidationMessageFor(m => m.InvoiceViewModel.DueDate)</span>
+    </div>
+
+    <div>
+        <b>Net:</b>
+        <input  asp-for="InvoiceViewModel.NetAmount" required />
+        <span>@Html.ValidationMessageFor(m => m.InvoiceViewModel.NetAmount)</span>
+    </div>
+
+    <div>
+        <b>Tax:</b>
+        <input asp-for="InvoiceViewModel.TaxAmount" required />
+        <span>@Html.ValidationMessageFor(m => m.InvoiceViewModel.TaxAmount)</span>
+    </div>
+
+    <div>
+        <b>Note:</b>
+        <textarea asp-for="InvoiceViewModel.Note"></textarea>
+        <span>@Html.ValidationMessageFor(m => m.InvoiceViewModel.Note)</span>
+    </div>
+
+    <div>
+        <b>Status:</b>
+        @Html.DropDownListFor(m => m.InvoiceViewModel.Status, Html.GetEnumSelectList<InvoiceApp.Domain.Enums.InvoiceStatus>())
+    </div>
+
+    <div>
+        <b>Client:</b>
+        @Html.DropDownListFor(m => m.InvoiceViewModel.ClientId, Model.Clients)
+        <span>@Html.ValidationMessageFor(m => m.InvoiceViewModel.ClientId)</span>
+    </div>
+
+    <div>
+        <b>Project:</b>
+        @Html.DropDownListFor(m => m.InvoiceViewModel.ProjectId, Model.Projects)
+        <span>@Html.ValidationMessageFor(m => m.InvoiceViewModel.ProjectId)</span>
+    </div>
+
+    <div>
+        <input type="submit" value="Save"/>
+    </div>
+} 

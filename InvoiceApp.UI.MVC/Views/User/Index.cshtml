@@ -1,0 +1,30 @@
+﻿@using InvoiceApp.UI.MVC.Models;
+@model IEnumerable<UserViewModel>;
+
+<h1>All Users</h1>
+<a href="/User/Create">Add new user</a>
+<table class="table table-active">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>Is admin</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Name</td>
+                <td>@user.Surname</td>
+                <td>@user.Email</td>
+                <td>@user.IsAdmin</td>
+                <td><a href="/User/Delete?key=@user.Key">Delete</a></td>
+                <td><a href="/User/Update?key=@user.Key">Update</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

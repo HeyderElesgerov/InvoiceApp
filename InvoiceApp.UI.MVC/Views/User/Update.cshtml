@@ -1,0 +1,65 @@
+﻿@using InvoiceApp.UI.MVC.Models;
+@model UpdateUserViewModel;
+
+<h1>Update User</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.Key)
+
+    <div>
+        @Html.ValidationSummary(true)
+    </div>
+
+    <div>
+        <b>Name</b>
+        @Html.EditorFor(m => m.Name)
+        <span>@Html.ValidationMessageFor(m => m.Name)</span>
+    </div>
+    <br />
+
+    <div>
+        <b>Surname</b>
+        @Html.EditorFor(m => m.Surname)
+        <span>@Html.ValidationMessageFor(m => m.Surname)</span>
+    </div>
+    <br />
+
+    <div>
+        <b>Email</b>
+        @Html.EditorFor(m => m.Email)
+        <span>@Html.ValidationMessageFor(m => m.Email)</span>
+    </div>
+    <br />
+
+    <div>
+        <b>Current password</b>
+        @Html.EditorFor(m => m.CurrentPassword)
+        <span>@Html.ValidationMessageFor(m => m.CurrentPassword)</span>
+    </div>
+    <br />
+
+    <div>
+        <b>New Password</b>
+        @Html.EditorFor(m => m.NewPassword)
+        <span>@Html.ValidationMessageFor(m => m.NewPassword)</span>
+    </div>
+    <br />
+
+    <div>
+        <b>Re enter the new password</b>
+        @Html.EditorFor(m => m.ReNewPassword)
+        <span>@Html.ValidationMessageFor(m => m.ReNewPassword)</span>
+    </div>
+    <br />
+
+    <div>
+        <b>Is admin?</b>
+        @Html.CheckBoxFor(m => m.IsAdmin)
+    </div>
+    <br />
+
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+}

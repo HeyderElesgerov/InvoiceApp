@@ -1,0 +1,31 @@
+﻿@using InvoiceApp.Application.ViewModels.Client;
+@model ClientViewModel;
+
+<h1>Update Client</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.Id)
+
+    <div>
+        @Html.ValidationSummary(true)
+    </div>
+
+    <div>
+        <b>First Name</b>
+        @Html.EditorFor(m => m.FirstName)
+        <span>@Html.ValidationMessageFor(m => m.FirstName)</span>
+    </div>
+    <br />
+
+    <div>
+        <b>Last Name</b>
+        @Html.EditorFor(m => m.LastName)
+        <span>@Html.ValidationMessageFor(m => m.LastName)</span>
+    </div>
+    <br />
+
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+}

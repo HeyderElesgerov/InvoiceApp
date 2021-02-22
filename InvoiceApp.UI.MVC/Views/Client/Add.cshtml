@@ -1,0 +1,32 @@
+﻿@using InvoiceApp.Application.ViewModels.Client;
+@model ClientViewModel;
+
+<h1>Add new client</h1>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.ValidationSummary(true)
+    </div>
+    <div>
+        <b>First Name</b>
+        @Html.EditorFor(m => m.FirstName)
+
+        <span>@Html.ValidationMessageFor(m => m.FirstName)</span>
+    </div>
+
+    <br />
+
+    <div>
+        <b>Last Name</b>
+        @Html.EditorFor(m => m.LastName)
+
+        <span>@Html.ValidationMessageFor(m => m.LastName)</span>
+    </div>
+
+    <br />
+
+    <div>
+        <input type="submit" value="Add" />
+    </div>
+}

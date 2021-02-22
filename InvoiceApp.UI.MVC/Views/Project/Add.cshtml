@@ -1,0 +1,23 @@
+﻿@using InvoiceApp.Application.ViewModels.Project;
+@model ProjectViewModel;
+
+<h1>Add new project</h1>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.ValidationSummary(true)
+    </div>
+    <div>
+        <b>Name</b>
+        @Html.EditorFor(m => m.Name)
+
+        <span>@Html.ValidationMessageFor(m => m.Name)</span>
+    </div>
+
+    <br />
+
+    <div>
+        <input type="submit" value="Add" />
+    </div>
+}

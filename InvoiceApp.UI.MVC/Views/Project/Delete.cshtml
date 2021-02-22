@@ -1,0 +1,22 @@
+﻿@using InvoiceApp.Application.ViewModels.Project;
+@model ProjectViewModel;
+
+<h1>Delete project</h1>
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    <div>
+        @Html.ValidationSummary(true)
+    </div>
+    <div>
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.Name)
+        <b>Name:</b>@Html.DisplayFor(m => m.Name)
+    </div>
+
+    <br />
+
+    <div>
+        <input type="submit" value="Delete" />
+    </div>
+}

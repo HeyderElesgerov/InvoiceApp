@@ -1,0 +1,24 @@
+﻿@using InvoiceApp.Application.ViewModels.Project;
+@model IEnumerable<ProjectViewModel>;
+
+<h1>All projects</h1>
+<a href="/Project/Add">Add new </a>
+<table class="table table-active">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var project in Model)
+        {
+            <tr>
+                <td>@project.Name</td>
+                <td><a href="/Project/Delete?projectId=@project.Id">Delete</a></td>
+                <td><a href="/Project/Update?projectId=@project.Id">Update</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

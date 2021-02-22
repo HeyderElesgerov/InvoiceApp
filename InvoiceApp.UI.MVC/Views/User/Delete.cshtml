@@ -1,0 +1,19 @@
+﻿@using InvoiceApp.UI.MVC.Models;
+@model UserViewModel;
+
+<h1>Delete User</h1>
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    <div>
+        <b>Name: </b>@Model.Name
+        <b>Surname: </b>@Model.Surname
+        <b>Email: </b>@Model.Email
+        <b>Is Admin: </b>@Model.IsAdmin
+    </div>
+    <br />
+
+    <div>
+        <input type="submit" value="Delete" />
+    </div>
+}

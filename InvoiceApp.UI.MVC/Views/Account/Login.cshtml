@@ -1,0 +1,30 @@
+﻿@model LoginViewModel;
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.ReturnUrl)
+
+    <div class="text-center">
+        <div>
+            @Html.ValidationSummary()
+        </div>
+
+        <b>Email:</b>
+        @Html.EditorFor(m => m.Email)
+        <span>@Html.ValidationMessageFor(m => m.Email) </span>
+        <br />
+        <b>Pasword</b>
+        @Html.EditorFor(m => m.Password)
+        <span>@Html.ValidationMessageFor(m => m.Password)</span>
+        <br />
+        <b>Remember me:</b>@Html.CheckBoxFor(m => m.RememberMe)
+
+        <div>
+            <input type="submit" value="Login" />
+        </div>
+    </div>
+}

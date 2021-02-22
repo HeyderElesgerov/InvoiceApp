@@ -1,0 +1,25 @@
+﻿@using InvoiceApp.Application.ViewModels.Project;
+@model ProjectViewModel;
+
+<h1>Update project</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.Id)
+
+    <div>
+        @Html.ValidationSummary(true)
+    </div>
+    <br />
+    <div>
+        <b>Name</b>
+        @Html.EditorFor(m => m.Name)
+        <span>@Html.ValidationMessageFor(m => m.Name)</span>
+    </div>
+
+    <br />
+
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+}

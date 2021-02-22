@@ -1,0 +1,29 @@
+﻿@using InvoiceApp.Application.ViewModels.Client;
+@model IEnumerable<ClientViewModel>;
+
+<h1>All clients</h1>
+
+<div>
+    <a href="/Client/Add">New Client</a>
+</div>
+<table class="table table-active">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var client in Model)
+        {
+            <tr>
+                <td>@client.FirstName</td>
+                <td>@client.LastName</td>
+                <td> <a href="/Client/Delete?clientId=@client.Id">Delete</a></td>
+                <td><a href="/Client/Update?clientId=@client.Id">Update</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

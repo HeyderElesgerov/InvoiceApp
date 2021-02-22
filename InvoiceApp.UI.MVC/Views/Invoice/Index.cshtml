@@ -1,0 +1,75 @@
+﻿@using InvoiceApp.UI.MVC.Models;
+@model FilteredInvoicesViewModel;
+
+<h1>Invoices</h1>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <b>Filter by Client:</b>
+        @Html.DropDownListFor(m => m.SelectedClientId, Model.Clients)
+    </div>
+    <br />
+
+    <div>
+        <b>Filter by Projects:</b>
+        @Html.DropDownListFor(m => m.SelectedProjectId, Model.Projects)
+    </div>
+    <br />
+
+    <div>
+        <b>Filter by Date:</b>
+        <b>From</b>
+        <input type="date" asp-for="From"/>
+
+        <b>To</b>
+        <input type="date" asp-for="To"/>
+    </div>
+    <br />
+
+    <input type="submit" value="Search"/>
+}
+
+<br />
+<a href="/Invoice/Add">Add new</a>
+<a href="/Invoice/Excel">Export to excel</a>
+<table class="table table-active">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Invoice Date</th>
+            <th>Due Date</th>
+            <th>Client</th>
+            <th>Project</th>
+            <th>Net</th>
+            <th>Tax</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var invoice in Model.InvoiceViewModels)
+        {
+            <tr>
+                <td>@invoice.Id</td>
+                <td>@invoice.InvoiceDate.ToShortDateString()</td>
+                <td>@invoice.DueDate.ToShortDateString()</td>
+                <td>@invoice.ClientName</td>
+                <td>@invoice.ProjectName</td>
+                <td>@invoice.NetAmount</td>
+                <td>@invoice.TaxAmount</td>
+                <td>@invoice.Status</td>
+                <td><a href="/Invoice/update?id=@invoice.Id">Update</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+
+<div>
+    <b>SUMMARY</b>
+    <b>Net: </b>@Model.NetSum
+    <b>Tax: </b>@Model.TaxSum
+    <b>Total: </b>@Model.TotalSum
+</div>

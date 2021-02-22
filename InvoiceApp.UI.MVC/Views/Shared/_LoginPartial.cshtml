@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using InvoiceApp.Infrastructure.Identity;
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <form  class="form-inline" method="post" asp-action="LogOut" asp-controller="Account" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <input  type="submit" class="nav-link btn btn-link text-dark" value="Logout" />
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="/Account/Login">Login</a>
+    </li>
+}
+</ul>
